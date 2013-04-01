@@ -14,7 +14,7 @@
   },
   "licenses": [
     {
-      "type": "MIT"
+      "type": "New BSD license"
     }
   ],
   "main": "demo-tts-proxy.js",
@@ -22,8 +22,5 @@
     "node": ">= 0.6.0"
   },
   "scripts": {},
-  "keywords": [],
-  "dependencies": {
-    "express": "~3.1.0"
-  }
+  "keywords": []
 }
