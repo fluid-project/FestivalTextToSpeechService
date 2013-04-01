@@ -1,0 +1,29 @@
+{
+  "name": "demo-tts-proxy",
+  "description": "Proxy that enables tts for the uio demo",
+  "version": "0.1.0",
+  "homepage": "https://github.com/yzen/demo-tts-proxy",
+  "author": {
+    "name": "Yura Zenevich",
+    "email": "yura.zenevich@gmail.com",
+    "url": "https://github.com/yzen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yzen/demo-tts-proxy.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": "demo-tts-proxy.js",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {},
+  "keywords": [],
+  "dependencies": {
+    "express": "~3.1.0"
+  }
+}
