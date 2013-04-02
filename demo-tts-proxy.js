@@ -15,8 +15,9 @@ var spawn = require("child_process").spawn;
 
 http.createServer(function (req, res) {
     var query = url.parse(req.url, true).query;
-    var echo = spawn("echo", [query.q], {stdio: "inherit"});
-    var text2wave = spawn("/usr/bin/text2wave", [], {stdio: "inherit"});
+    var echo = spawn("echo", [query.q], {stdio: ["pipe", "pipe", "pipe"]});
+    var text2wave = spawn("/usr/bin/text2wave", [],
+        {stdio: ["pipe", "pipe", "pipe"]});
     echo.stdout.pipe(text2wave.stdin, {end: true});
     text2wave.stdout.pipe(res, {end: true});
 }).listen(8080);
