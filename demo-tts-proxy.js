@@ -10,13 +10,13 @@ compliance with this License.
 "use strict";
 
 var http = require("http");
+var url = require("url");
+var spawn = require("child_process").spawn;
 
 http.createServer(function (req, res) {
-    var request = http.request({
-        host: "translate.google.com",
-        path: "/translate_tts" + req.url.substr(1)
-    }, function (resp) {
-        resp.pipe(res, {end: true});
-    });
-    req.pipe(request, {end: true});
+    var query = url.parse(req.url, true).query;
+    var echo = spawn("echo", [query.q], {stdio: "inherit"});
+    var text2wave = spawn("/usr/bin/text2wave", [], {stdio: "inherit"});
+    echo.stdout.pipe(text2wave.stdin, {end: true});
+    text2wave.stdout.pipe(res, {end: true});
 }).listen(8080);
