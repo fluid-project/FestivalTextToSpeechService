@@ -11,19 +11,12 @@ compliance with this License.
 
 var http = require("http");
 var url = require("url");
-var process = require("child_process");
+var spawn = require("child_process").spawn;
 
 http.createServer(function (req, res) {
-    var query = url.parse(req.url, true);
-    var cmd = ["echo", query.q, "|", "/usr/bin/text2wave"];
-    process.spawn(cmd).pipe(res, {end: true});
-    /*
-    var request = http.request({
-        host: "translate.google.com",
-        path: "/translate_tts" + req.url.substr(1)
-    }, function (resp) {
-        resp.pipe(res, {end: true});
-    });
-    req.pipe(request, {end: true});
-    */
+    var query = url.parse(req.url, true).query;
+    var echo = spawn("echo", [query.q], {stdio: "inherit"});
+    var text2wave = spawn("/usr/bin/text2wave", [], {stdio: "inherit"});
+    echo.stdout.pipe(text2wave.stdin, {end: true});
+    text2wave.stdout.pipe(res, {end: true});
 }).listen(8080);
