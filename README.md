@@ -26,4 +26,4 @@ Run
 
 Run the following command:
 
-    node demo-tts-proxy.js
+    node FestivalTextToSpeechService.js
