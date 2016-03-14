@@ -1,0 +1,12 @@
+---
+
+nodejs_app_name: FestivalTextToSpeechService
+
+nodejs_app_tcp_port: 8083
+
+nodejs_app_start_script: FestivalTextToSpeechService.js
+
+nodejs_app_git_clone: false
+
+nodejs_app_rpm_packages:
+  - festival

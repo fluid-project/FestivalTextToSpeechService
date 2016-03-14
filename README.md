@@ -30,3 +30,7 @@ Run
 Run the following command:
 
     node FestivalTextToSpeechService.js
+
+The application will be running on port 8083 by default.
+
+    curl -o hello.wav http://localhost:8083/?q=hello%20world
