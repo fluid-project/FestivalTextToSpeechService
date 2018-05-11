@@ -1,0 +1,4 @@
+---
+# Vagrant-specific variables
+
+nodejs_app_install_dir: /home/vagrant/sync/FestivalTextToSpeechService
